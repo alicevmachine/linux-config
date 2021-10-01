@@ -30,26 +30,35 @@ pass=4247
 #assume root
 echo $pass | doas su;
 
+pacman -Syu
+
 #start install commands
 pacman -S base-devel
-pacman -S xorg xorg-xinit picom brave
+pacman -S xorg xorg-xinit picom 
 pacman -S kitty neofetch 
 pacman -S vim emacs cmatrix
 pacman -S pulseaudio nitrogen
 
-yay -S ponymix
-yay -S python-pywal
-
-
 #git commands
-
 git clone https://github.com/alicevmachine/linux-config
 git clone https://aur.archlinux.org/yay-git.git
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+#install yay
+
 cd ~/yay-git
 makepkg -si
 cd
 
-cp ~/etc/X11/xinit/xinitrc ~/home/alicev/.xinitrc
+#yay commands
+yay -S ponymix
+cd ponymix
+make
+
+yay -S python-pywal
+yay -S brave-bin
+
+cp ~/etc/X11/xinit/xinitrc ~/.xinitrc
 echo "MAKE SURE YOU EDIT .xinitrc!!!!"
 echo "AT BOTTOM OF PAGE DELETE EVERYTHING AND PUT THE FOLLOWING"
 echo "nitrogen --restore &"
@@ -72,4 +81,4 @@ nitrogen ~/custom/wallpapers/sega.png
 wal -i ~/custom/wallpapers/sega.png
 
 #set enviroment configs
-printf "\n neofetch\n(cat ~/.cache/wal/sequences &)"
+printf "\nneofetch\n(cat ~/.cache/wal/sequences &)"
