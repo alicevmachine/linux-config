@@ -23,7 +23,7 @@ echo " #@.               %@                @# "
 echo "#@@=              +@@*              -@@#"
 
 #setup variables
-pass=4247
+
 
 #setup users
 
